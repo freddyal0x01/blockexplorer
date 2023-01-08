@@ -2,6 +2,7 @@
   "name": "blockexplorer",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +11,7 @@
   },
   "dependencies": {
     "@next/font": "13.0.7",
+    "alchemy-sdk": "^2.2.5",
     "next": "13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0"
