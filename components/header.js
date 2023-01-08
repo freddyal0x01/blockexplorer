@@ -16,9 +16,9 @@ const Header = () => {
             </Link>
             <nav>                
                 <ul className="flex list-none gap-5">
-                    <Link href="/"><li className="text-lg cursor-pointer font-semibold">Home</li></Link>
-                    <Link href="/balance"><li className="text-lg cursor-pointer font-semibold">Balance</li></Link>
-                    <Link href="/nft"><li className="text-lg cursor-pointer font-semibold">NFT</li></Link>
+                    <Link href="/"><li className="text-lg cursor-pointer hover:text-stone-600">Home</li></Link>
+                    <Link href="/balance"><li className="text-lg cursor-pointer hover:text-stone-600">Balance</li></Link>
+                    <Link href="/nft"><li className="text-lg cursor-pointer hover:text-stone-600">NFT</li></Link>
                 </ul>
             </nav>
         </header>
