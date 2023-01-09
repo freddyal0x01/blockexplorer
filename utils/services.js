@@ -14,12 +14,10 @@ const alchemy = new Alchemy(settings);
 
 
 
-
-const getAccountEthBalance = async (address) => {
+// Get the balance in wei from an eth address. 
+export const getAccountEthBalance = async (address) => {
   const balance = await alchemy.core.getBalance(address, "latest");
   return balance;
 }
 
-const balance = await getAccountEthBalance("0xa40199aebe80d41b7d06d06fd8982c3ea5f70514");
 
-console.log(balance.toString());
