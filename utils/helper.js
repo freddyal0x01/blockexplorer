@@ -6,6 +6,6 @@ export const formatAddress = (address) => {
 }
 
 // Convert Wei over to Eth
-export const formatEther = (wei) => {
+export const weiToEth = (wei) => {
     return Utils.formatEther(wei);
 }

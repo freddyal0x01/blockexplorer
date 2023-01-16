@@ -1,15 +1,12 @@
 import { Network, Alchemy } from 'alchemy-sdk';
 
-import { config } from 'dotenv';
-config()
-
 // Optional Config object, but defaults to demo api-key and eth-mainnet.
-const settings = {
-  apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY, // Replace with your Alchemy API Key.
-  network: Network.ETH_GOERLI, // Replace with your network.
+export const settings = {
+  apiKey: process.env.API_KEY, // Replace with your Alchemy API Key.
+  network: Network.ETH_MAINNET, // Replace with your network.
 };
 
-const alchemy = new Alchemy(settings);
+export const alchemy = new Alchemy(settings);
 
 // Obtain all of the txs from an ETH address
 export const getAccountTxs = async (address) => {
@@ -24,7 +21,7 @@ export const getAccountTxs = async (address) => {
 }
 
 // Get the balance in wei from an eth address
-export const getAccountEthBalance = async (address) => {
+export const getEthAccountBalance = async (address) => {
   const balance = await alchemy.core.getBalance(address, "latest");
   return balance;
 }
