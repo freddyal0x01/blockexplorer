@@ -2,24 +2,36 @@ import Head from 'next/head'
 import { useState } from 'react';
 import Header from "../components/header";
 import { getEthAccountBalance } from '../utils/services';
-import { weiToEth } from '../utils/helper';
+import { formatEther } from '../utils/helper';
 
 
 const Balance = () => {
 
-    const [address, setAddress] = useState(undefined);
-    const [waiting, isWaiting] = useState(false);
-    const [error, setError] = useState(null);
-
+    const [accountBalance, setAccountBalance] = useState("");
+    const [inputValue, setInputValue] = useState("");
+    const [address, setAddress] = useState("");
+    const [status, setStatus] = useState("starting");
 
     const getBalance = async (e) => {
-        e.preventDefault();
-        const funds = await getEthAccountBalance(address);
-        const ethFunds = weiToEth(funds);
+
+        try {
+            e.preventDefault();
+        
+            setStatus("waiting");
+    
+            const funds = await getEthAccountBalance(inputValue);
+            
+            setAccountBalance(funds.toString());
+            setStatus("done");
+            setAddress(inputValue);
+            setInputValue(""); 
+        } catch (err) {
+            setStatus("error");
+        }
     }
 
     function handleInputChange(e) {
-        setAddress(e.target.value);
+        setInputValue(e.target.value);
     }
     
     return (
@@ -33,36 +45,62 @@ const Balance = () => {
 
             <Header />
 
-            <main className="flex justify-center text-center">
+            <main className="flex flex-col justify-center items-center text-center">
+
+                <h1 className='text-3xl font-bold mt-12'>Ethereum Balance</h1>
 
                 <form 
                     onSubmit={getBalance} 
-                    className='grid sm:grid-cols-10 gap-4 ustify-center my-8 w-4/5 shadow p-4'
+                    className='grid sm:grid-cols-10 gap-4 mt-8 mb-16 w-4/5 shadow-2xl p-4'
                 >
                     <label 
-                        className='sm:col-span-10 text-lg text-gray-700 font-bold mb-2' 
+                        className='sm:col-span-10 text-lg text-gray-900 font-bold' 
                         htmlFor='address'
                     >
-                        Address
+                        Search Wallet Address Balance
                     </label>
                     <input 
                         className='sm:col-span-8 bg-gray-200 p-2 rounded' 
                         type="text" 
                         id='address' 
-                        placeholder='Address'
                         onChange={handleInputChange}
-                        value={address}
+                        placeholder="Wallet Address"
+                        value={inputValue}
                     />
                     <button 
-                        className='disabled:opacity-25 hover:bg-blue-800 sm:col-span-2 bg-blue-500 rounded py-2 px-2 text-white font-bold' 
+                        className='disabled:opacity-25 hover:bg-blue-800 sm:col-span-2 bg-blue-500 rounded p-2 text-white font-bold' 
                         type="submit"
                         disabled={
-                            !address || waiting
+                            !inputValue
                         }
                     >
                         Search
                     </button>
                 </form>
+                
+                {
+                    status === "done" ? (
+                        <article>
+                            <section className='m-3'>
+                                <p className='text-xl my-2 text-gray-900 font-semibold'>Ethereum Address</p>
+                                <p className='text-sm sm:text-base my-2'>{address}</p>
+                            </section>
+                            <section className='m-3'>
+                                <p className='text-xl my-2 text-gray-900 font-semibold'>Account Balance</p>
+                                <p className='text-base my-2'><span className='font-medium text-blue-400'>{formatEther(accountBalance)}</span> Ether</p>
+                            </section>
+                            
+                        </article>
+                    ) : status === "waiting" ? (
+                        <p className='flex'>
+                            <span className='font-semibold text-xl self-center'>Loading...</span>
+                        </p>
+                    ) : status === "error" ? (
+                        <p className='text-xl font-semibold text-red-600'>Incorrect Ethereum Address</p>
+                    ) : (
+                        <p></p>
+                    )
+                }
 
             </main>
             
