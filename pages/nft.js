@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import Header from "../components/header";
 import { getNftMetadata } from '../utils/services';
@@ -103,7 +104,14 @@ const NFT = () => {
                             <section className="col-span-1 text-left sm:col-span-6 mt-4 p-2">
                                 <p className='mb-2'>
                                     <span className='font-semibold text-gray-900'>NFT Address:</span>&nbsp;
-                                    <a className='text-blue-600 break-words hover:underline hover:text-blue-800 visited:text-purple-600' href={`https://etherscan.io/address/${nftMetadata.contract.address}`} target="_blank" rel="noopener noreferrer">{nftMetadata.contract.address}</a> 
+                                    <Link 
+                                        className='text-blue-600 break-words hover:underline hover:text-blue-800 visited:text-purple-600' 
+                                        href={`https://etherscan.io/address/${nftMetadata.contract.address}`} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                    >
+                                            {nftMetadata.contract.address}
+                                    </Link> 
                                 </p>
                                 <p className='mb-2'>
                                     <span className='font-semibold text-gray-900'>Collection Name:</span>&nbsp;
@@ -115,7 +123,14 @@ const NFT = () => {
                                 </p>
                                 <p className='mb-2'>
                                     <span className='font-semibold text-gray-900'>Collection Website:</span>&nbsp;
-                                    <a className='text-blue-600 hover:underline hover:text-blue-800 visited:text-purple-600' href={nftMetadata.contract.openSea.externalUrl} target="_blank" rel="noopener noreferrer">{nftMetadata.contract.openSea.externalUrl}</a>
+                                    <Link 
+                                        className='text-blue-600 hover:underline hover:text-blue-800 visited:text-purple-600' 
+                                        href={nftMetadata.contract.openSea.externalUrl} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                    >
+                                            {nftMetadata.contract.openSea.externalUrl}
+                                    </Link>
                                 </p>
                                 {nftMetadata.title ? (
                                     <p className='mb-2'>
