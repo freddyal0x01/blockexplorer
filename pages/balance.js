@@ -12,10 +12,10 @@ const Balance = () => {
     const [address, setAddress] = useState("");
     const [status, setStatus] = useState("starting");
 
-    const getBalance = async (e) => {
+    const getBalance = async (event) => {
 
         try {
-            e.preventDefault();
+            event.preventDefault();
         
             setStatus("waiting");
     
@@ -30,8 +30,8 @@ const Balance = () => {
         }
     }
 
-    function handleInputChange(e) {
-        setInputValue(e.target.value);
+    function handleInputChange(event) {
+        setInputValue(event.target.value);
     }
     
     return (
