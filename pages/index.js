@@ -15,7 +15,7 @@ export default function Home() {
       
       <Header />
       
-      <main>  
+      <main className='flex flex-col sm:flex-row sm:justify-around my-12 bg-zinc-50'>  
         <Blocks />
         <Transactions />
       </main>
