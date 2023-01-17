@@ -21,25 +21,21 @@ export const getNftMetadata = async(contractAddress, tokenId) => {
 }
 
 // Get 10 of the latest blocks from the blockchain
-
 export const getLastTenBlocks = () => {
-
+  
 }
 
 // Get 10 of the latest txs from the latest block
-
 export const getLastTenTxs = () => {
 
 }
 
 // Get the details of an individual block
-
 export const getIndividualBlock = () => {
 
 }
 
 // Get the details of an indivitual tx
-
 export const getIndividualTx = () => {
 
 }
