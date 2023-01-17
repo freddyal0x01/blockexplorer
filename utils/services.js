@@ -8,18 +8,6 @@ export const settings = {
 
 export const alchemy = new Alchemy(settings);
 
-// Obtain all of the txs from an ETH address
-export const getAccountTxs = async (address) => {
-  txHistory = {
-    fromBlock: "0x0",
-    fromAddress: address,
-    excludeZeroValue: true,
-    category: ["external", "internal", "erc20", "erc721", "erc1155"],
-  }
-  const txs = await alchemy.core.getAssetTransfers(txHistory);
-  return txs;
-}
-
 // Get the balance in wei from an eth address
 export const getEthAccountBalance = async (address) => {
   const balance = await alchemy.core.getBalance(address, "latest");
@@ -30,4 +18,40 @@ export const getEthAccountBalance = async (address) => {
 export const getNftMetadata = async(contractAddress, tokenId) => {
   const nftMetadata = await alchemy.nft.getNftMetadata(contractAddress, tokenId);
   return nftMetadata;
+}
+
+// Get 10 of the latest blocks from the blockchain
+
+export const getLastTenBlocks = () => {
+
+}
+
+// Get 10 of the latest txs from the latest block
+
+export const getLastTenTxs = () => {
+
+}
+
+// Get the details of an individual block
+
+export const getIndividualBlock = () => {
+
+}
+
+// Get the details of an indivitual tx
+
+export const getIndividualTx = () => {
+
+}
+
+// Obtain all of the txs from an ETH address
+export const getAccountTxs = async (address) => {
+  txHistory = {
+    fromBlock: "0x0",
+    fromAddress: address,
+    excludeZeroValue: true,
+    category: ["external", "internal", "erc20", "erc721", "erc1155"],
+  }
+  const txs = await alchemy.core.getAssetTransfers(txHistory);
+  return txs;
 }
