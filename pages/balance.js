@@ -51,7 +51,7 @@ const Balance = () => {
 
                 <form 
                     onSubmit={getBalance} 
-                    className='grid sm:grid-cols-10 gap-4 mt-8 mb-16 w-4/5 shadow-2xl p-4'
+                    className='grid sm:grid-cols-10 gap-4 mt-8 mb-16 w-4/5 shadow-2xl p-4 bg-white'
                 >
                     <label 
                         className='sm:col-span-10 text-lg text-gray-900 font-semibold' 
