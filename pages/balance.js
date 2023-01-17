@@ -89,7 +89,6 @@ const Balance = () => {
                                 <p className='text-xl my-2 text-gray-900 font-semibold'>Account Balance</p>
                                 <p className='text-base my-2'><span className='font-medium text-blue-400'>{formatEther(accountBalance)}</span> ETH</p>
                             </section>
-                            
                         </article>
                     ) : status === "waiting" ? (
                         <p className='flex'>
