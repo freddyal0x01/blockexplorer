@@ -54,7 +54,7 @@ const Balance = () => {
                     className='grid sm:grid-cols-10 gap-4 mt-8 mb-16 w-4/5 shadow-2xl p-4'
                 >
                     <label 
-                        className='sm:col-span-10 text-lg text-gray-900 font-bold' 
+                        className='sm:col-span-10 text-lg text-gray-900 font-semibold' 
                         htmlFor='address'
                     >
                         Search Wallet Address Balance
