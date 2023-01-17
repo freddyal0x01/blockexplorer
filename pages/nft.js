@@ -48,7 +48,7 @@ const NFT = () => {
 
                 <form 
                     onSubmit={getNftData}
-                    className='grid sm:grid-cols-10 gap-4 my-8 w-4/5 shadow-2xl p-4'
+                    className='grid sm:grid-cols-10 gap-4 my-8 w-4/5 shadow-2xl p-4 bg-white'
                 >
                     <p className='sm:col-span-10 m-2'>Note: This will only work for the OpenSea Marketplace</p>
                     <label 
@@ -94,7 +94,7 @@ const NFT = () => {
                     
                     status === "done" ? (
                         
-                        <article className='grid grid-cols-1 sm:grid-cols-10 gap-4 my-8 w-4/5 shadow-2xl p-4'>
+                        <article className='grid grid-cols-1 sm:grid-cols-10 gap-4 my-8 w-4/5 shadow-2xl p-4 bg-white'>
                             <h2 className='sm:col-span-10 text-2xl mt-4 text-gray-900 font-semibold'>NFT Metadata</h2>
                             <Image 
                                 src={nftMetadata.contract.openSea.imageUrl}
