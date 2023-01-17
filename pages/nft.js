@@ -62,6 +62,7 @@ const NFT = () => {
                         type="text" 
                         id='address' 
                         onChange={(e) => setNftAddressInputValue(e.target.value)}
+                        placeholder="NFT Contract Address"
                         value={nftAddressInputValue}
                     />
                     <label 
@@ -75,6 +76,7 @@ const NFT = () => {
                         type="text" 
                         id='address' 
                         onChange={(e) => setTokenIDInputValue(e.target.value)}
+                        placeholder="NFT Token ID"
                         value={tokenIDInputValue}
                     />
                     <button 
