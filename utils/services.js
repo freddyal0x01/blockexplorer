@@ -21,18 +21,29 @@ export const getNftMetadata = async(contractAddress, tokenId) => {
 }
 
 // Get 10 of the latest blocks from the blockchain
-export const getLastTenBlocks = () => {
-  
-}
-
-// Get 10 of the latest txs from the latest block
-export const getLastTenTxs = () => {
-
+export const getLastTenBlocks = async() => {
+  const lastTenBlocks = [];
+  const latestBlock = await alchemy.core.getBlockNumber();
+  let block = latestBlock;
+  while (block > latestBlock - 10) {
+    const _block = await alchemy.core.getBlock(block);
+    lastTenBlocks.push(_block);
+    block--;
+  }
+  return lastTenBlocks;
 }
 
 // Get the details of an individual block
-export const getIndividualBlock = () => {
+export const getIndividualBlock = async(block) => {
+  const blockNumber = await alchemy.core.getBlock(block);
+  return blockNumber;
+}
 
+// Get 10 of the latest txs from the latest block
+export const getLastTenTxs = async() => {
+  const lastTenTxs = [];
+  const lastBlock = await alchemy.core.getBlockNumber();
+  
 }
 
 // Get the details of an indivitual tx
