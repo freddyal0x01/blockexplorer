@@ -87,7 +87,7 @@ const Balance = () => {
                             </section>
                             <section className='m-3'>
                                 <p className='text-xl my-2 text-gray-900 font-semibold'>Account Balance</p>
-                                <p className='text-base my-2'><span className='font-medium text-blue-400'>{formatEther(accountBalance)}</span> ETH</p>
+                                <p className='text-base my-2'><span className='font-semibold text-blue-600'>{formatEther(accountBalance)}</span> ETH</p>
                             </section>
                         </article>
                     ) : status === "waiting" ? (
