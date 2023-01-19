@@ -60,15 +60,3 @@ export const getIndividualTx = async (tx) => {
   const _tx = await alchemy.transact.getTransaction(tx);
   return _tx;
 }
-
-// Obtain all of the txs from an ETH address
-export const getAccountTxs = async (address) => {
-  txHistory = {
-    fromBlock: "0x0",
-    fromAddress: address,
-    excludeZeroValue: true,
-    category: ["external", "internal", "erc20", "erc721", "erc1155"],
-  }
-  const txs = await alchemy.core.getAssetTransfers(txHistory);
-  return txs;
-}
