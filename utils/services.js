@@ -15,13 +15,13 @@ export const getEthAccountBalance = async (address) => {
 }
 
 // Get the NFT metadata based off the contract address and token ID
-export const getNftMetadata = async(contractAddress, tokenId) => {
+export const getNftMetadata = async (contractAddress, tokenId) => {
   const nftMetadata = await alchemy.nft.getNftMetadata(contractAddress, tokenId);
   return nftMetadata;
 }
 
 // Get 10 of the latest blocks from the blockchain
-export const getLastTenBlocks = async() => {
+export const getLastTenBlocks = async () => {
   const lastTenBlocks = [];
   const latestBlock = await alchemy.core.getBlockNumber();
   let block = latestBlock;
@@ -34,21 +34,31 @@ export const getLastTenBlocks = async() => {
 }
 
 // Get the details of an individual block
-export const getIndividualBlock = async(block) => {
-  const blockNumber = await alchemy.core.getBlock(block);
-  return blockNumber;
+export const getIndividualBlock = async (block) => {
+  const _block = await alchemy.core.getBlock(block);
+  return _block;
 }
 
 // Get 10 of the latest txs from the latest block
-export const getLastTenTxs = async() => {
+export const getLastTenTxs = async () => {
   const lastTenTxs = [];
   const lastBlock = await alchemy.core.getBlockNumber();
-  
+  // for (let i = 0; i < lastBlock)
+  const block = await alchemy.core.getBlock(lastBlock);
+  const txs = block.transactions;
+
+  for (let tx of txs.slice(0,10)) {
+    const tx_data = await alchemy.transact.getTransaction(tx)
+    lastTenTxs.push(tx_data);
+  }
+
+  return lastTenTxs;
 }
 
 // Get the details of an indivitual tx
-export const getIndividualTx = () => {
-
+export const getIndividualTx = async (tx) => {
+  const _tx = await alchemy.transact.getTransaction(tx);
+  return _tx;
 }
 
 // Obtain all of the txs from an ETH address
