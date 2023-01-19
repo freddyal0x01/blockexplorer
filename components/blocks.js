@@ -18,7 +18,7 @@ const Blocks = () => {
             {
                 blocks.map(({miner, number, transactions}, index) => (
                     <section key={index} className="text-center grid grid-cols-3 p-2 bg-slate-50 border-slate-600 border-2 m-2">
-                        <p>Block #: {number}</p>
+                        <p>Block #: <span className="text-blue-600">{number}</span></p>
                         <p># of Txs: <span className="text-blue-600">{transactions.length}</span></p>
                         <p>Validator Address: <span className="text-blue-600 break-all">{formatAddress(miner)}</span></p>
                     </section>
