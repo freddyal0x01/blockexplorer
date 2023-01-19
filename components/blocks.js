@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useState } from "react";
 import { formatAddress } from "../utils/helper";
 import { getLastTenBlocks } from "../utils/services";
@@ -18,7 +19,15 @@ const Blocks = () => {
             {
                 blocks.map(({miner, number, transactions}, index) => (
                     <section key={index} className="text-center grid grid-cols-3 p-2 bg-slate-50 border-slate-600 border-2 m-2">
-                        <p>Block #: <span className="text-blue-600">{number}</span></p>
+                        <p>
+                            Block #:&nbsp;
+                            <Link 
+                                className='text-blue-600 hover:underline hover:text-blue-800 visited:text-purple-600'
+                                href={`/block/${number}`}
+                           >
+                                {<span className="text-blue-600">{number}</span>}
+                            </Link>
+                        </p>
                         <p># of Txs: <span className="text-blue-600">{transactions.length}</span></p>
                         <p>Validator Address: <span className="text-blue-600 break-all">{formatAddress(miner)}</span></p>
                     </section>
