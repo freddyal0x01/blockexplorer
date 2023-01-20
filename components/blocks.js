@@ -23,7 +23,12 @@ const Blocks = () => {
                             Block #:&nbsp;
                             <Link 
                                 className='text-blue-600 hover:underline hover:text-blue-800 visited:text-purple-600'
-                                href={`/block/${number}`}
+                                href={
+                                    {
+                                        pathname: `/block/[number]`,
+                                        query: { number }
+                                    }
+                                }
                            >
                                 {<span className="text-blue-600">{number}</span>}
                             </Link>
