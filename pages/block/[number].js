@@ -81,8 +81,8 @@ const Block = ({ number }) => {
                                     <span>Transactions:</span>&nbsp;
                                     <ul>
                                     {
-                                        blockData.transactions.map((tx) => (
-                                            <li>
+                                        blockData.transactions.map((tx, index) => (
+                                            <li key={index}>
                                                 <Link 
                                                     className='text-blue-600 hover:underline hover:text-blue-800 visited:text-purple-600'
                                                     href={
