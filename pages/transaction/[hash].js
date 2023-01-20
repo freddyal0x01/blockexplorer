@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Header from '../../components/header';
 import { getIndividualTx } from '../../utils/services';
