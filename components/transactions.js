@@ -24,8 +24,13 @@ const Transactions = () => {
                             Tx Hash:&nbsp;
                             <Link 
                                 className='text-blue-600 hover:underline hover:text-blue-800 visited:text-purple-600'
-                                href={`/transaction/${hash}`}
-                           >
+                                href={
+                                    {
+                                        pathname: `/transaction/[hash]`,
+                                        query: { hash }
+                                    }
+                                }
+                            >
                                 {<span className="text-blue-600 break-all">{formatAddress(hash)}</span>}
                             </Link>
                         </p>
