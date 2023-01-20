@@ -48,7 +48,17 @@ const Transaction = ({ hash }) => {
                                 </p>
                                 <p className='flex justify-between border-b border-slate-400'>
                                     <span>Block Number:</span>&nbsp;
-                                    <span className='break-all text-blue-600'>{txData.blockNumber}</span>
+                                    <Link 
+                                        className='text-blue-600 hover:underline hover:text-blue-800 visited:text-purple-600'
+                                        href={
+                                            {
+                                                pathname: `/block/[number]`,
+                                                query: { number: txData.blockNumber }
+                                            }
+                                        }
+                                    >
+                                        <span className='break-all text-blue-600'>{txData.blockNumber}</span>
+                                    </Link>
                                 </p>
                                 <p className='flex justify-between border-b border-slate-400'>
                                     <span>Nonce:</span>&nbsp;
