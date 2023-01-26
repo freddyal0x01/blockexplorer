@@ -12,7 +12,7 @@ const Transactions = () => {
             const _txs = await getLastTenTxs();
             setTxs(_txs);
         })();
-    }, [txs])
+    }, [])
 
     return (
         <article className="self-center shadow-2xl p-4 my-2 sm:mx-2 w-4/5 bg-white">
